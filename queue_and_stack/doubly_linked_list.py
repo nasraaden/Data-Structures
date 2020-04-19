@@ -173,3 +173,21 @@ class DoublyLinkedList:
             current_node = current_node.next
 
         return max_value
+
+    # def find_middle(self):
+    #     size = 0
+    #     current_node = self.head
+
+    #     # if the list has only self.head, it's length is one so return self.head
+    #     if self.head.next is None:
+    #         return self.head
+
+    #     # if the list has two elements (self.head and self.head.next), return the first one which is self.head
+    #     if self.head.next.next is None:
+    #         return self.head
+
+    #     while current_node is not None:
+    #         current_node += 1
+    #         size += 1
+    #     middle = size // 2
+    #     return middle

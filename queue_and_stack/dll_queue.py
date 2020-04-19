@@ -21,7 +21,7 @@ class Queue:
             self.queue.remove_from_head()
             self.size -= 1
 
-        else:
+        if self.size == 0:
             return None
 
     def len(self):
