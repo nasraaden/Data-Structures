@@ -12,17 +12,14 @@ class Queue:
 
     def enqueue(self, value):
         # increment the size of the queue
-
-        self.queue.add_to_tail(value)
-        self.size += 1
+        if value is not None:
+            self.queue.add_to_tail(value)
+            self.size += 1
 
     def dequeue(self):
-        if self.size > 0:
-            self.queue.remove_from_head()
+        if self.queue.head is not None:
             self.size -= 1
-
-        if self.size == 0:
-            return None
+            return self.queue.remove_from_head()
 
     def len(self):
         self.size = len(self.queue)
