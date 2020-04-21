@@ -1,7 +1,7 @@
+from dll_stack import Stack
+from dll_queue import Queue
 import sys
 sys.path.append('../queue_and_stack')
-from dll_queue import Queue
-from dll_stack import Stack
 
 
 class BinarySearchTree:
@@ -12,21 +12,58 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # check to see if there is a node (either left or right)
+        # check to see if value inserting is less than or greater than value at the root
+        # if it is, check to see if right or left is none
+        # if not none, insert value at right or left
+        # if none, put the value there with a new instance of BST
+        if value < self.value:
+            if self.left is not None:
+                self.left.insert(value)
+            else:
+                self.left = BinarySearchTree(value)
+        if value >= self.value:
+            if self.right is not None:
+                self.right.insert(value)
+            else:
+                self.right = BinarySearchTree(value)
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if self.value is None:
+            return False
+        elif target == self.value:
+            return True
+        elif target < self.value:
+            if self.left is not None:
+                return self.left.contains(target)
+            else:
+                return False
+        elif target > self.value:
+            if self.right is not None:
+                return self.right.contains(target)
+            else:
+                return False
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        if self.right is not None:
+            return self.right.get_max()
+        else:
+            return self.value
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        # call the function cb on self.value
+        cb(self.value)
+        # call for each on the right side so it can call cb on each value
+        if self.right:
+            self.right.for_each(cb)
+        # call for each on the left side so it can call cb on each value
+        if self.left:
+            self.left.for_each(cb)
 
     # DAY 2 Project -----------------------
 
