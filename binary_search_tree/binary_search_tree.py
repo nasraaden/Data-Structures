@@ -70,22 +70,65 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node is None:
+            return
+
+        if node.left is not None:
+            node.in_order_print(node.left)
+
+        print(node.value)
+
+        if node.right is not None:
+            node.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # using queue so we need a new instance of queue
+        queue = Queue()
+        # add the root to the queue
+        queue.enqueue(node)
+        # while queue is not empty
+        while queue.size != 0:
+            # delete the head of the queue
+            deleted = queue.dequeue()
+            # print that
+            print(deleted.value)
+            # check to see if deleted node has children on the left
+            if deleted.left is not None:
+                # add left child to queue
+                queue.enqueue(deleted.left)
+            # check to see if deleted node has children on the right
+            if deleted.right is not None:
+                # add right child to queue
+                queue.enqueue(deleted.right)
 
+    # while node
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+
     def dft_print(self, node):
-        pass
+        # using stack so we need a new instance of stack
+        stack = Stack()
+        # add node to stack
+        stack.push(node)
+        # while stack is not empty
+        while stack.size != 0:
+            # delete the node from the stack
+            deleted = stack.pop()
+            # print it
+            print(deleted.value)
+            # check to see if
+            if deleted.right is not None:
+                stack.push(deleted.right)
+            if deleted.left is not None:
+                stack.push(deleted.left)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
+
     def pre_order_dft(self, node):
         pass
 
